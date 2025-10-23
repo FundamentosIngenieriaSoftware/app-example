@@ -1,0 +1,37 @@
+name: Compilación y ejecución de pruebas
+
+# Eventos que gatillan la ejecución del pipeline
+on:
+  # Ejecución manual
+  workflow_dispatch:
+  # Cada vez que se haga un push al repositorio
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+      # Descargar última version desde el repositorio
+      - name: Descargar del repositorio
+        uses: actions/checkout@v4
+
+      # Instalar java
+      - name: Instalar Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distributions: 'adopt'
+
+      # Compilar y empaquetar
+      - name: Compilar y empaquetar
+        run: mvn --batch-mode -DskipTests package
+
+      # Ejecutar pruebas automatizadas (JUnit)
+      - name: Ejecutar pruebas
+        run: mvn --batch-mode test
+
+      # Generar un reporte de pruebas
+
+      # (Opcional) Desplegar
