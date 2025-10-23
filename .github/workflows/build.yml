@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distributions: 'adopt'
+          distribution: 'adopt'
 
       # Compilar y empaquetar
       - name: Compilar y empaquetar
