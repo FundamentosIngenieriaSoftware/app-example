@@ -39,7 +39,7 @@ jobs:
         with:
           report_paths: '**/target/surefire-reports/TEST-*.xml'
 
-	    # Generar reporte de cobertura
+      # Generar reporte de cobertura
       - name: Publish test coverage results
         uses: PavanMudigonda/jacoco-reporter@v4.8
         with:
